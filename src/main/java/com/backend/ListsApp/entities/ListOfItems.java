@@ -3,8 +3,6 @@ package com.backend.ListsApp.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,8 +17,8 @@ public class ListOfItems {
 	private Long listId;
 	private String listName;
 	private LocalDateTime dateTime;
-	@OneToMany
-	@JsonIgnore
+	
+	@OneToMany(mappedBy="listOfItems")
 	private List<Todo> todos;
 	
 	public ListOfItems() {
@@ -48,10 +46,10 @@ public class ListOfItems {
 		this.dateTime = dateTime;
 	}
 
-	public List<Todo> getTasks() {
+	public List<Todo> getTodos() {
 		return todos;
 	}
-	public void setTasks(List<Todo> todos) {
+	public void setTodos(List<Todo> todos) {
 		this.todos = todos;
 	}
 	

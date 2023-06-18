@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.backend.ListsApp.entities.ListOfItems;
 
-public interface ListOfItemsRepository extends JpaRepository<ListOfItems, Integer> {
-
+public interface ListOfItemsRepository extends JpaRepository<ListOfItems, Long> {
+	// ListOfItems getListOfItemsById(Long listId);
 }

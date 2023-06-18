@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 
@@ -17,6 +18,7 @@ public class Item {
 	protected String itemName;
 	protected String itemDescription;
 	@ManyToOne
+	@JoinColumn(name="list_id")
 	@JsonIgnore
 	protected ListOfItems listOfItems;
 	
@@ -42,10 +44,10 @@ public class Item {
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
-	public ListOfItems getAppList() {
+	public ListOfItems getListOfItems() {
 		return listOfItems;
 	}
-	public void setAppList(ListOfItems listOfItems) {
+	public void setListOfItems(ListOfItems listOfItems) {
 		this.listOfItems = listOfItems;
 	}
 	
