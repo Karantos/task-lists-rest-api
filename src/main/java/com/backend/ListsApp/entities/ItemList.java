@@ -10,46 +10,46 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class ListOfItems {
+public class ItemList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
-	private Long listId;
-	private String listName;
-	private LocalDateTime dateTime;
+	private Long id;
+	private String name;
+	private LocalDateTime dateCreated;
 	
 	@OneToMany(mappedBy="listOfItems")
-	private List<Todo> todos;
+	private List<ToDoItem> todos;
 	
-	public ListOfItems() {
+	public ItemList() {
 		super();
 	}
 	
 	public Long getListId() {
-		return listId;
+		return id;
 	}
 	public void setListId(Long listId) {
-		this.listId = listId;
+		this.id = listId;
 	}
 	public String getListName() {
-		return listName;
+		return name;
 	}
 	public void setListName(String listName) {
-		this.listName = listName;
+		this.name = listName;
 	}
 	 
 	public LocalDateTime getDateTime() {
-		return dateTime;
+		return dateCreated;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setDateTime(LocalDateTime dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
-	public List<Todo> getTodos() {
+	public List<ToDoItem> getTodos() {
 		return todos;
 	}
-	public void setTodos(List<Todo> todos) {
+	public void setTodos(List<ToDoItem> todos) {
 		this.todos = todos;
 	}
 	
