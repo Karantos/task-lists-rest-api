@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.backend.ListsApp.entities.ItemList;
 import com.backend.ListsApp.entities.ToDoItem;
 import com.backend.ListsApp.repositories.ToDoItemRepository;
 
+@Service
 public class ToDoItemService {
+	
 	@Autowired
 	private ToDoItemRepository toDoItemRepository;
 	

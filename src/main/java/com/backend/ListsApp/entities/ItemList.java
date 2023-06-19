@@ -18,7 +18,7 @@ public class ItemList {
 	private String name;
 	private LocalDateTime dateCreated;
 	
-	@OneToMany(mappedBy="listOfItems")
+	@OneToMany(mappedBy="itemList")
 	private List<ToDoItem> todos;
 	
 	public ItemList() {

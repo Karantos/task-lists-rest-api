@@ -24,27 +24,27 @@ public class ToDoItemController {
 	private ToDoItemService toDoItemService;
 	
 
-	@GetMapping("/getAllTodos")
+	@GetMapping("")
 	public List<ToDoItem> getAllToDoItems() {
 		return toDoItemService.getAllToDoItems();
 	}
 	
-	@PostMapping("/createTodo")
+	@PostMapping("")
 	public void addToDoItem(@RequestBody ToDoItem todo) {
 		toDoItemService.addToDoItem(todo);
 	}
 	
-	@PutMapping("/updateTodo")
+	@PutMapping("")
 	public void updateToDoItem(@RequestBody ToDoItem todo) {
 		toDoItemService.updateToDoItem(todo);
 	}
 	
-	@DeleteMapping("/deleteTodo/{todoId}")
+	@DeleteMapping("/{id}")
 	public void deleteToDoItem(@PathVariable Long todoId) {
 		toDoItemService.deleteToDoItem(todoId);
 	}
 	
-	@GetMapping("/{todoId}") 
+	@GetMapping("/{id}") 
 	public ItemList getItemListByToDoItem(@PathVariable Long todoId) {
 		return toDoItemService.getItemListByToDoItem(todoId);
 	}

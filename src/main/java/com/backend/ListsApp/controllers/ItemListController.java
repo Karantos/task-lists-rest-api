@@ -17,8 +17,8 @@ import com.backend.ListsApp.entities.ToDoItem;
 import com.backend.ListsApp.services.ItemListService;
 
 
-@RestController
 @RequestMapping("api/itemList")
+@RestController
 public class ItemListController {
 	
 	@Autowired
@@ -40,18 +40,17 @@ public class ItemListController {
 		itemListService.updateItemList(list);
 	}
 	
-	
 	@DeleteMapping("/{id}")
 	public void deleteItemList(@PathVariable Long id) {
 		itemListService.deleteItemList(id);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/getItemList/{id}")
 	public ItemList getItemList(@PathVariable Long id) {
 		return itemListService.getItemList(id);
 	}
 
-	@GetMapping("{id}") 
+	@GetMapping("/getItemListById/{id}") 
 	public List<ToDoItem> getTodoItemByItemListId(@PathVariable Long id) {
 		return itemListService.getToDoItemByItemListId(id);
 	}
