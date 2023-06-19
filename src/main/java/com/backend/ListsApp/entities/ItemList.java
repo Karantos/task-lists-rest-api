@@ -1,41 +1,43 @@
 package com.backend.ListsApp.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import jakarta.persistence.Entity;
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
+@MappedSuperclass
 public class ItemList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
-	private Long id;
-	private String name;
-	private LocalDateTime dateCreated;
+	protected Long listId;
+	protected String listName;
 	
-	@OneToMany(mappedBy="itemList")
-	private List<ToDoItem> todos;
+	@CreationTimestamp
+	@JsonIgnore
+	protected LocalDateTime dateCreated;
 	
 	public ItemList() {
 		super();
 	}
 	
 	public Long getListId() {
-		return id;
+		return listId;
 	}
 	public void setListId(Long listId) {
-		this.id = listId;
+		this.listId = listId;
 	}
 	public String getListName() {
-		return name;
+		return listName;
 	}
 	public void setListName(String listName) {
-		this.name = listName;
+		this.listName = listName;
 	}
 	 
 	public LocalDateTime getDateTime() {
@@ -45,13 +47,4 @@ public class ItemList {
 	public void setDateTime(LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
-	public List<ToDoItem> getTodos() {
-		return todos;
-	}
-	public void setTodos(List<ToDoItem> todos) {
-		this.todos = todos;
-	}
-	
-	
 }

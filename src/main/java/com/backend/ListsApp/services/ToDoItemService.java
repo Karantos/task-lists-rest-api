@@ -6,38 +6,39 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backend.ListsApp.entities.ItemList;
-import com.backend.ListsApp.entities.ToDoItem;
-import com.backend.ListsApp.repositories.ToDoItemRepository;
+import com.backend.ListsApp.entities.TodoItem;
+import com.backend.ListsApp.entities.TodoList;
+import com.backend.ListsApp.repositories.TodoItemRepository;
 
 @Service
-public class ToDoItemService {
+public class TodoItemService {
 	
 	@Autowired
-	private ToDoItemRepository toDoItemRepository;
+	private TodoItemRepository todoItemRepository;
 	
 	
-	public List<ToDoItem> getAllToDoItems() {
-		return toDoItemRepository.findAll();
+	public List<TodoItem> getAllToDoItems() {
+		return todoItemRepository.findAll();
 	}
 	
-	public void addToDoItem(ToDoItem todo) {
-		toDoItemRepository.save(todo);
+	public void addTodoItem(TodoItem todo) {
+		todoItemRepository.save(todo);
 	}
 
-	public void updateToDoItem(ToDoItem todo) {
-		toDoItemRepository.save(todo);
+	public void updateTodoItem(TodoItem todo) {
+		todoItemRepository.save(todo);
 	}
 	
-	public void deleteToDoItem(Long id) {
-		toDoItemRepository.deleteById(id);
+	public void deleteTodoItem(Long id) {
+		todoItemRepository.deleteById(id);
 	}
 	
-	public ItemList getItemListByToDoItem(Long id) {
-		Optional<ToDoItem> optTodo = toDoItemRepository.findById(id);
+	// Find Todo List by Todo Items ID
+	public TodoList getTodoListByTodoItem(Long id) {
+		Optional<TodoItem> optTodo = todoItemRepository.findById(id);
 		
 		if(optTodo.isPresent()) {
-			return optTodo.get().getListOfItems();
+			return optTodo.get().getTodoList();
 		} else {
 			return null;
 		}

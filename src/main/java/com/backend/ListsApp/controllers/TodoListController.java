@@ -14,39 +14,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.ListsApp.entities.ItemList;
 import com.backend.ListsApp.entities.TodoItem;
-import com.backend.ListsApp.services.TodoItemService;
+import com.backend.ListsApp.entities.TodoList;
+import com.backend.ListsApp.services.TodoListService;
 
-@RequestMapping("todoItem")
+
+@RequestMapping("todoList")
 @RestController
-public class TodoItemController {
+public class TodoListController {
 	
 	@Autowired
-	private TodoItemService todoItemService;
+	private TodoListService todoListService;
 	
-
+	
 	@GetMapping("/getAll")
-	public List<TodoItem> getAllTodoItems() {
-		return todoItemService.getAllToDoItems();
+	public List<TodoList> getAllTodoLists() {
+		return todoListService.getAllTodoLists();
 	}
 	
 	@PostMapping("/add")
-	public void addTodoItem(@RequestBody TodoItem todo) {
-		todoItemService.addTodoItem(todo);
+	public void addTodoList(@RequestBody TodoList list) {
+		todoListService.addTodoList(list);
 	}
 	
 	@PutMapping("/update")
-	public void updateToDoItem(@RequestBody TodoItem todo) {
-		todoItemService.updateTodoItem(todo);
+	public void updateTodoList(@RequestBody TodoList list) {
+		todoListService.updateTodoList(list);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteTodoItem(@PathVariable Long id) {
-		todoItemService.deleteTodoItem(id);
+	public void deleteTodoList(@PathVariable Long id) {
+		todoListService.deleteTodoList(id);
 	}
 	
-	@GetMapping("/getList/{id}") 
-	public ItemList getTodoListByTodoItem(@PathVariable Long id) {
-		return todoItemService.getTodoListByTodoItem(id);
+	@GetMapping("/get/{id}")
+	public ItemList getTodoList(@PathVariable Long id) {
+		return todoListService.getTodoList(id);
 	}
-			
+
+	@GetMapping("/getTodo/{id}") 
+	public List<TodoItem> getTodoItemByTodoLIst(@PathVariable Long id) {
+		return todoListService.getTodoItemByTodoList(id);
+	}
 }
