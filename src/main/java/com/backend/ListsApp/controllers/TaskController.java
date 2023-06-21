@@ -12,41 +12,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.ListsApp.entities.ItemList;
-import com.backend.ListsApp.entities.TodoItem;
-import com.backend.ListsApp.services.TodoItemService;
+import com.backend.ListsApp.entities.Task;
+import com.backend.ListsApp.entities.TasksList;
+import com.backend.ListsApp.services.TaskService;
 
-@RequestMapping("todoItem")
+@RequestMapping("tasks")
 @RestController
-public class TodoItemController {
+public class TaskController {
 	
 	@Autowired
-	private TodoItemService todoItemService;
+	private TaskService taskService;
 	
 
 	@GetMapping("/getAll")
-	public List<TodoItem> getAllTodoItems() {
-		return todoItemService.getAllToDoItems();
+	public List<Task> getAllTasks() {
+		return taskService.getAllTasks();
 	}
 	
 	@PostMapping("/add")
-	public void addTodoItem(@RequestBody TodoItem todo) {
-		todoItemService.addTodoItem(todo);
+	public void addTask(@RequestBody Task task) {
+		taskService.addTask(task);
 	}
 	
 	@PutMapping("/update")
-	public void updateToDoItem(@RequestBody TodoItem todo) {
-		todoItemService.updateTodoItem(todo);
+	public void updateTask(@RequestBody Task task) {
+		taskService.updateTask(task);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteTodoItem(@PathVariable Long id) {
-		todoItemService.deleteTodoItem(id);
+	public void deleteTask(@PathVariable Long id) {
+		taskService.deleteTask(id);
 	}
 	
-	@GetMapping("/getList/{id}") 
-	public ItemList getTodoListByTodoItem(@PathVariable Long id) {
-		return todoItemService.getTodoListByTodoItem(id);
+	@GetMapping("/getTasksList/{id}") 
+	public TasksList getTasksListtByTask(@PathVariable Long id) {
+		return taskService.getTasksListByTask(id);
 	}
 			
 }

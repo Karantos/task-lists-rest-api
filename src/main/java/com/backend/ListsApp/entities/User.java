@@ -2,6 +2,8 @@ package com.backend.ListsApp.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +16,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
-	private String name;
 	private String username;
 	private String password;
 	private String role;
 
 	@OneToMany(mappedBy = "author")
-	private List<TodoList> todoLists;
+	@JsonIgnore
+	private List<TasksList> tasksList;
 	
 	public User() {
 		super();
@@ -32,14 +34,6 @@ public class User {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getUsername() {
@@ -67,11 +61,11 @@ public class User {
 		this.role = role;
 	}
 
-	public List<TodoList> getTodoLists() {
-		return todoLists;
+	public List<TasksList> getTasksList() {
+		return tasksList;
 	}
 
-	public void setTodoLists(List<TodoList> todoLists) {
-		this.todoLists = todoLists;
+	public void setTodoLists(List<TasksList> tasksList) {
+		this.tasksList = tasksList;
 	}	
 }

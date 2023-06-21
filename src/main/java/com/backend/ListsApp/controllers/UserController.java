@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.ListsApp.entities.TodoList;
+import com.backend.ListsApp.entities.TasksList;
 import com.backend.ListsApp.entities.User;
 import com.backend.ListsApp.services.UserService;
 
@@ -49,9 +49,9 @@ public class UserController {
 		return userService.getUser(id);
 	}
 
-	@GetMapping("/getTodoList/{id}") 
-	public List<TodoList> getTodoItemByTodoLIst(@PathVariable Long id) {
-		return userService.getTodoListByUser(id);
+	@GetMapping("/getTasksList/{id}") 
+	public List<TasksList> getTasksListByUser(@PathVariable Long id) {
+		return userService.getTaskListByUser(id);
 	}
 }
 
