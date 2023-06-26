@@ -18,7 +18,7 @@
           </template>
 
           <template v-slot:append>
-            <v-btn color="grey" icon="mdi-playlist-edit" variant="text"></v-btn>
+            <v-btn color="grey" icon="mdi-playlist-edit" variant="text" @click="getUpdateListId(list.listId)"></v-btn>
             <v-btn color="grey" icon="mdi-playlist-remove" variant="text" @click="deleteList(list.listId)"></v-btn>
             <v-btn color="grey" icon="mdi-information" variant="text" @click="viewList(list.listId)"></v-btn>
           </template>
@@ -44,6 +44,10 @@ export default {
       this.$router.push({name: 'tasks', params: { id: listId }});
     },
 
+    getUpdateListId(listId) {
+      this.$router.push({name: 'save-list', params: { id: listId }});
+    },
+
     getAllLists() {
       ListsAppDataService.getAllLists()
         .then(response => {
@@ -65,7 +69,9 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    }
+    },
+
+    
   },
   mounted() {
     this.getAllLists();

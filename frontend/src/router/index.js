@@ -10,7 +10,7 @@ const routes = [
     component: () => import('@/components/Lists'),
   },
   {
-    path: '/save-list',
+    path: '/save-list/:id',
     name: 'save-list',
     component: () => import('@/components/AddList'),
   },
@@ -21,7 +21,6 @@ const routes = [
     component: () => import('@/components/Tasks'),
   },
 ]
-
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

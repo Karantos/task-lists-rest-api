@@ -4,7 +4,7 @@
       <v-text-field 
         v-model="list.name" 
         :rules="list.rules" 
-        label="List name"
+        label="List name *"
         clearable
         required
       >
@@ -15,7 +15,28 @@
         clearable
       >
       </v-text-field>
-      <v-btn type="submit" block class="mt-2" color="secondary" @click="addList" :disabled="!list.name">Save list</v-btn>
+      <v-btn type="submit" block class="mt-2" color="secondary" @click="addList" :disabled="!list.name">Add list
+        <v-overlay
+          activator="parent"
+          location-strategy="connected"
+          scroll-strategy="close"
+        >
+          <v-card class="pa-2">
+            {{ message }}
+          </v-card>
+        </v-overlay>
+      </v-btn>
+        <v-btn type="submit" block class="mt-2" color="secondary" @click="updateList" :disabled="!list.name">Update list
+        <v-overlay
+          activator="parent"
+          location-strategy="connected"
+          scroll-strategy="close"
+        >
+          <v-card class="pa-2">
+            {{ message }}
+          </v-card>
+        </v-overlay>
+      </v-btn>
     </v-form>
   </v-sheet>
 </template>
@@ -27,6 +48,7 @@ export default {
   name: "save-list",
   data() {
     return {
+      message: '',
       list: {
         id: null,
         name: '',
@@ -34,7 +56,7 @@ export default {
         rules: [
           value => {
             if (value) return true
-            return 'You must enter a name for your list.'
+            return 'You must enter a name for your list!'
           },
         ]
       },
@@ -53,6 +75,24 @@ export default {
         .then(response => {
           this.list.id = response.data.id;
           console.log(response.data);
+          this.message = "You have added a list successfully! Add another one or return to Homepage to view you lists.";
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+
+    updateList() {
+      let list = {
+        listId: this.$route.params.id,
+        listName: this.list.name,
+        listDescription: this.list.description
+      };
+
+      ListsAppDataService.updateList(list)
+        .then(response => {
+          console.log(response.data)
+          this.message = `You have updated the list with id ${list.listId} successfully!`;
         })
         .catch(error => {
           console.log(error);
@@ -60,4 +100,5 @@ export default {
     }
   }
 }
+
 </script>

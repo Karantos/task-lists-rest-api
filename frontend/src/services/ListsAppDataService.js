@@ -14,8 +14,12 @@ class ListsAppDataService {
         return http.delete(`/lists/delete/${id}`);
     }
 
-    updateList(data) {
-        return http.put("/lists/update", data)
+    updateList(list) {
+        return http.put("/lists/update", list)
+    }
+
+    getList(id) {
+        return http.get(`/lists/get/${id}`)
     }
 
     // Task methods
@@ -31,8 +35,12 @@ class ListsAppDataService {
         return http.delete(`/tasks/delete/${id}`)
     }
 
-    updateTask(data) {
-        return http.put("/tasks/update", data)
+    updateTask(task) {
+        return http.put("/tasks/update", task)
+    }
+
+    updateStatus(task) {
+        return http.put("/tasks/updateStatus", task)
     }
 
 }
