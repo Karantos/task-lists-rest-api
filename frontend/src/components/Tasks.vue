@@ -21,11 +21,17 @@
 				<v-list-item
 					v-for="task in tasks"
 					:key="task.taskId"
-					:title="task.taskTitle"
-					@click="status(task)"
-					:class="{ 'text-decoration-line-through' : task.status }"
+					@click="updateTaskStatus(task)"
 				>   
-
+					
+					<v-list-item-title 
+							:class="{ 'text-decoration-line-through' : task.status }"
+					> 
+						{{ task.id }}
+						{{ task.taskTitle }}
+						{{ task.status }}
+					</v-list-item-title>
+					
 					<template v-slot:prepend>
 						<v-list-item-action start>
 							<v-checkbox-btn 
@@ -36,9 +42,10 @@
 					</template>
 
 					<template v-slot:append>
-						<v-btn color="grey" icon="mdi-pencil-outline" variant="text" @click="updateTask"></v-btn>
+						<v-btn color="grey" icon="mdi-pencil-outline" variant="text" @click="updateTask(task)"></v-btn>
 						<v-btn color="grey" icon="mdi-delete-outline" variant="text" @click="deleteTask(task.id)"></v-btn>
 					</template>
+
 
 				</v-list-item>
 			</v-list>
@@ -51,10 +58,10 @@ import ListsAppDataService from '@/services/ListsAppDataService'
 
 export default {
 	name: "tasks",
-	message: "",
 	data() {
 		return {
 			tasks: [],
+			message: "",
 			task: {
 				id: null,
 				title: "",
@@ -74,8 +81,8 @@ export default {
 			console.log(addTask)
 		},
 
-		getTask(id) {
-			ListsAppDataService.getTask(id)
+		getTask(taskId) {
+			ListsAppDataService.getTask(taskId)
 				.then(response => {
 					this.tasks = response.data;
 					console.log(response.data);
@@ -106,11 +113,11 @@ export default {
 				});
 		},
 
-		deleteTask(taskId) {
-			ListsAppDataService.deleteTask(taskId)
+		deleteTask(id) {
+			ListsAppDataService.deleteTask(id)
 				.then(response => {
 					console.log(response.data);
-					const taskIndex = this.tasks.findIndex(task => task.id === taskId) // finds index of array(tasks) of a task which id == id of the task to delete
+					const taskIndex = this.tasks.findIndex(task => task.id === id) // finds index of array(tasks) of a task which id == id of the task to delete
 					this.tasks.splice(taskIndex, 1) // removes 1 element from array index that is defined by taskIndex
 				})
 				.catch(error => {
@@ -118,21 +125,31 @@ export default {
 				});
 		},
 
-		updateTask() {
-			let task = {
-				taskId: this.task.id,
-				taskTitle: this.task.title,
-				taskStatus: this.task.status,
-				tasksList: {
-					listId: this.$route.params.id
-				}
-			};
+		updateTaskStatus(task) {
+			let data = task;
+			task.status = !task.status;
 
-			ListsAppDataService.updateTask(task)
+			ListsAppDataService.updateTask(data)
 				.then(response => {
 					task.status = !task.status;
 					console.log(response.data);
-					this.message = "You have successfully changed task name!"
+					this.$router.go(0);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		},
+
+		updateTask(task) {
+			let data = task;
+			data = {
+				taskTitle: this.title
+			}
+
+			ListsAppDataService.updateTask(data)
+				.then(response => {
+					console.log(response.data);
+					this.$router.go(0);
 				})
 				.catch(error => {
 					console.log(error);
