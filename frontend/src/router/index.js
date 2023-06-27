@@ -7,18 +7,23 @@ const routes = [
     path: '/',
     alias: '/home',
     name: 'home',
-    component: () => import('@/components/Lists'),
+    component: () => import('@/views/Lists'),
   },
   {
-    path: '/save-list/:id',
-    name: 'save-list',
-    component: () => import('@/components/AddList'),
+    path: '/add-list',
+    name: 'add-list',
+    component: () => import('@/views/AddList'),
+  },
+  {
+    path: '/update-list/:id',
+    name: 'update-list',
+    component: () => import('@/views/UpdateList'),
   },
   {
     // get tasks by list id
     path: '/tasks/:id',
     name: 'tasks',
-    component: () => import('@/components/Tasks'),
+    component: () => import('@/views/Tasks'),
   },
 ]
 

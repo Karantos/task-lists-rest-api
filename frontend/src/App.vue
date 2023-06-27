@@ -11,7 +11,7 @@
       <v-list density="compact" nav>
         <v-list-item prepend-icon="mdi-home-variant" title="Home" value="home" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-format-list-group-plus" title="New List" value="new-list"
-          to="/save-list/:id"></v-list-item>
+          to="/add-list"></v-list-item>
       </v-list>
     </v-navigation-drawer>
 

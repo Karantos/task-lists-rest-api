@@ -1,5 +1,5 @@
 <template>
-  <v-sheet width="600" class="mx-auto ma-6">
+  <v-sheet width="600" ref="addForm" class="mx-auto ma-6">
     <v-form @submit.prevent>
       <v-text-field 
         v-model="list.name" 
@@ -15,18 +15,8 @@
         clearable
       >
       </v-text-field>
-      <v-btn type="submit" block class="mt-2" color="secondary" @click="addList" :disabled="!list.name">Add list
-        <v-overlay
-          activator="parent"
-          location-strategy="connected"
-          scroll-strategy="close"
-        >
-          <v-card class="pa-2">
-            {{ message }}
-          </v-card>
-        </v-overlay>
-      </v-btn>
-        <v-btn type="submit" block class="mt-2" color="secondary" @click="updateList" :disabled="!list.name">Update list
+
+      <v-btn type="submit" block class="mt-2" color="secondary" @click="updateList" :disabled="!list.name">Update list
         <v-overlay
           activator="parent"
           location-strategy="connected"
@@ -45,7 +35,7 @@
 import ListsAppDataService from '@/services/ListsAppDataService';
 
 export default {
-  name: "save-list",
+  name: "add-list",
   data() {
     return {
       message: '',

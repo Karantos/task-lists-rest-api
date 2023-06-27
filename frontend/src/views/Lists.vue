@@ -45,7 +45,7 @@ export default {
     },
 
     getUpdateListId(listId) {
-      this.$router.push({name: 'save-list', params: { id: listId }});
+        this.$router.push({name: 'update-list', params: { id: listId }});
     },
 
     getAllLists() {
