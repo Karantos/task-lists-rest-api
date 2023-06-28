@@ -35,7 +35,7 @@
 import ListsAppDataService from '@/services/ListsAppDataService';
 
 export default {
-  name: "add-list",
+  name: "update-list",
   data() {
     return {
       message: '',
@@ -54,24 +54,6 @@ export default {
     };
   },
   methods: {
-    addList() {
-      let data = {
-        listId: this.list.id,
-        listName: this.list.name,
-        listDescription: this.list.description
-      };
-
-      ListsAppDataService.addList(data)
-        .then(response => {
-          this.list.id = response.data.id;
-          console.log(response.data);
-          this.message = "You have added a list successfully! Add another one or return to Homepage to view you lists.";
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-
     updateList() {
       let list = {
         listId: this.$route.params.id,
