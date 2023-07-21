@@ -3,7 +3,7 @@ package com.backend.ListsApp.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,9 +22,10 @@ public class TasksList {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
 	private Long listId;
+	private String listDescription;
 	private String listName;
 	
-	@CreationTimestamp
+	@UpdateTimestamp
 	@JsonIgnore
 	private LocalDateTime dateCreated;
 	
@@ -56,6 +57,14 @@ public class TasksList {
 		this.listName = listName;
 	}
 	 
+	public String getListDescription() {
+		return listDescription;
+	}
+
+	public void setListDescription(String listDescription) {
+		this.listDescription = listDescription;
+	}
+
 	public LocalDateTime getDateTime() {
 		return dateCreated;
 	}

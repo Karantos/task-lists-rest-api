@@ -33,6 +33,20 @@ public class TaskService {
 		taskRepository.deleteById(id);
 	}
 	
+	public void updateStatus(Task task) {
+		taskRepository.save(task);
+	}
+	
+	public Task getTask(Long taskId) {
+		Optional<Task> optTask = taskRepository.findById(taskId);
+		
+		if(optTask.isPresent()) {
+			return optTask.get();
+		} else {
+			return null;
+		}
+	}
+	
 	// Find Tasks List by Task ID
 	public TasksList getTasksListByTask(Long id) {
 		Optional<Task> optTask = taskRepository.findById(id);

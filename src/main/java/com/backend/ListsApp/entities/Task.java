@@ -21,8 +21,7 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
 	private Long taskId;
-	private String taskTitle;
-	private String taskDescription;	
+	private String taskTitle;	
 	
 	@CreationTimestamp
 	@JsonIgnore
@@ -48,8 +47,8 @@ public class Task {
 		return taskId;
 	}
 
-	public void setId(Long id) {
-		this.taskId = id;
+	public void setId(Long taskId) {
+		this.taskId = taskId;
 	}
 
 	public String getTaskTitle() {
@@ -58,14 +57,6 @@ public class Task {
 
 	public void setTaskTitle(String taskTitle) {
 		this.taskTitle = taskTitle;
-	}
-
-	public String getTaskDescription() {
-		return taskDescription;
-	}
-
-	public void setTaskDescription(String taskDescription) {
-		this.taskDescription = taskDescription;
 	}
 
 	public LocalDate getTaskCreated() {

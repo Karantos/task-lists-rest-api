@@ -3,6 +3,7 @@ package com.backend.ListsApp.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.backend.ListsApp.entities.Task;
 import com.backend.ListsApp.entities.TasksList;
 import com.backend.ListsApp.services.TaskService;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("tasks")
 @RestController
 public class TaskController {
@@ -39,9 +41,19 @@ public class TaskController {
 		taskService.updateTask(task);
 	}
 	
+	@PutMapping("/updateStatus")
+	public void updateStatus(@RequestBody Task task) {
+		taskService.updateStatus(task);
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public void deleteTask(@PathVariable Long id) {
 		taskService.deleteTask(id);
+	}
+	
+	@GetMapping("/getTask/{id}") 
+	public Task getTask(@PathVariable Long id) {
+		return taskService.getTask(id);
 	}
 	
 	@GetMapping("/getTasksList/{id}") 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.backend.ListsApp.entities.Task;
 import com.backend.ListsApp.entities.TasksList;
+import com.backend.ListsApp.repositories.TaskRepository;
 import com.backend.ListsApp.repositories.TasksListRepository;
 
 @Service
@@ -16,6 +17,8 @@ public class TasksListService {
 	
 	@Autowired
 	private TasksListRepository tasksListRepository;
+	@Autowired
+	private TaskRepository taskRepository;
 	
 	public List<TasksList> getAllTasksLists() {
 		return tasksListRepository.findAll();
@@ -30,7 +33,11 @@ public class TasksListService {
 	}
 	
 	public void deleteTasksList(Long listId) {
-		tasksListRepository.deleteById(listId);;
+		List<Task> tasksToDel = getTaskByTasksList(listId);
+		for (Task task : tasksToDel) {
+			taskRepository.delete(task);
+		}
+		tasksListRepository.deleteById(listId);
 	}
 
 	public TasksList getTasksList(Long listId) {
