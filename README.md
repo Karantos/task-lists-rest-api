@@ -5,27 +5,23 @@ App made as a final project for **Web application development project** course w
 
 Used **Spring Data JPA** for CRUD operations on a **MySQL** database. Frontend was made with **Vue** and **Vuetify** and can be found as a separate project [here](https://github.com/Karantos/ListsApp-VueFrontend)https://github.com/Karantos/ListsApp-VueFrontend). 
 
-
-**TODO**: Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
-
-
 ## API Endpoints
 A short summary of available REST API Endpoints for the functionalities of the app that have been implemented.
 
 | Method |   Resource               | Description                      |
 | :----: | :-----------:            | -------------                    |
-| `GET`  | `/lists/getAll`          | Get all lists                    |
-| `GET`  | `/lists/get/{id}`        | Get specific list with that id   |
-| `GET`  | `/lists/getTask/{id}`    | Get specific list by task id  |
-| `POST`  | `/lists/add`            | Create new list (list object in Request Body)                   |
-| `PUT`  | `/lists/update`          | Update that list (list object in Request Body)                    |
-| `DELETE`  | `/lists/delete/{id}`  | Delete that list                     |
-| `GET`  | `/tasks/getAll`          | Get all tasks                    |
-| `GET`  | `/tasks/get/{id}`          | Get specific task with that id                 |
-| `GET`  | `/tasks/getTask/{id}`          | Get specific task by list id                   |
-| `POST`  | `/tasks/add`          | Create new task (task object in Request Body)                |
-| `PUT`  | `/tasks/update`          | Update that task (task object in Request Body)                  |
-| `DELETE`  | `/tasks/delete/{id}`  | Delete that task                     |
+| `GET`  | `api/lists/getAll`          | Get all lists                    |
+| `GET`  | `api/lists/get/{id}`        | Get specific list with that id   |
+| `GET`  | `api/lists/getTasks/{id}`    | Get tasks by list id  |
+| `POST`  | `api/lists/add`            | Create new list (list object in Request Body)                   |
+| `PUT`  | `api/lists/update`          | Update that list (list object in Request Body)                    |
+| `DELETE`  | `api/lists/delete/{id}`  | Delete that list                     |
+| `GET`  | `api/tasks/getAll`          | Get all tasks                    |
+| `GET`  | `api/tasks/get/{id}`          | Get specific task with that id                 |
+| `GET`  | `api/tasks/getList/{id}`          | Get specific list by task id                   |
+| `POST`  | `api/tasks/add`          | Create new task (task object in Request Body)                |
+| `PUT`  | `api/tasks/update`          | Update that task (task object in Request Body)                  |
+| `DELETE`  | `api/tasks/delete/{id}`  | Delete that task                     |
 
 ## Tools Used
 * Spring Boot 3
@@ -34,4 +30,7 @@ A short summary of available REST API Endpoints for the functionalities of the a
 * Hibernate
 * Apache Maven
 * MySQL database
+
+### TODO
+* Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
 
