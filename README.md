@@ -11,7 +11,7 @@ Used **Spring Data JPA** for CRUD operations on a **MySQL** database. Frontend w
 ## API Endpoints
 A short summary of available REST API Endpoints for the functionalities of the app that have been implemented.
 
-| Method | Resource      | Description   |
-| ------ | ------------- | ------------- |
-| GET    | /lists/getAll | Get all lists |
+| Method |   Resource      | Description   |
+| :----: | :-----------:   | ------------- |
+| `GET`  | `/lists/getAll` | Get all lists |
 
