@@ -18,7 +18,7 @@ import com.backend.ListsApp.entities.TasksList;
 import com.backend.ListsApp.services.TasksListService;
 
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("lists")
+@RequestMapping("api/lists")
 @RestController
 public class TasksListController {
 	
@@ -51,7 +51,7 @@ public class TasksListController {
 		return tasksListService.getTasksList(id);
 	}
 
-	@GetMapping("/getTask/{id}") 
+	@GetMapping("/getTasks/{id}") 
 	public List<Task> getTaskByTasksList(@PathVariable Long id) {
 		return tasksListService.getTaskByTasksList(id);
 	}

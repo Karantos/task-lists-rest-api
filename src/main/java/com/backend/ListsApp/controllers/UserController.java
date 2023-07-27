@@ -18,7 +18,7 @@ import com.backend.ListsApp.entities.User;
 import com.backend.ListsApp.services.UserService;
 
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("users")
+@RequestMapping("api/users")
 @RestController
 public class UserController {
 	

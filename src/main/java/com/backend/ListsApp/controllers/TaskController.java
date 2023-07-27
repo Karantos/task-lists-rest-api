@@ -18,7 +18,7 @@ import com.backend.ListsApp.entities.TasksList;
 import com.backend.ListsApp.services.TaskService;
 
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("tasks")
+@RequestMapping("api/tasks")
 @RestController
 public class TaskController {
 	
@@ -41,11 +41,6 @@ public class TaskController {
 		taskService.updateTask(task);
 	}
 	
-	@PutMapping("/updateStatus")
-	public void updateStatus(@RequestBody Task task) {
-		taskService.updateStatus(task);
-	}
-	
 	@DeleteMapping("/delete/{id}")
 	public void deleteTask(@PathVariable Long id) {
 		taskService.deleteTask(id);
@@ -56,8 +51,8 @@ public class TaskController {
 		return taskService.getTask(id);
 	}
 	
-	@GetMapping("/getTasksList/{id}") 
-	public TasksList getTasksListtByTask(@PathVariable Long id) {
+	@GetMapping("/getList/{id}") 
+	public TasksList getTasksListByTask(@PathVariable Long id) {
 		return taskService.getTasksListByTask(id);
 	}
 			
