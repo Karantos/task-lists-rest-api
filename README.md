@@ -5,8 +5,7 @@ App made as a final project for **Web application development project** course w
 
 Used **Spring Data JPA** for CRUD operations on a **MySQL** database. Frontend was made with **Vue** and **Vuetify** and can be found as a separate project [here](https://github.com/Karantos/ListsApp-VueFrontend)https://github.com/Karantos/ListsApp-VueFrontend). 
 
-**TODO**
-* Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
+**TODO**: Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
 
 ## API Endpoints
 A short summary of available REST API Endpoints for the functionalities of the app that have been implemented.
