@@ -1,4 +1,4 @@
-# TodoListsApp-Project
+# Task Lists App Project
 A simple todo application REST API developed using Spring Boot. User can add multiple lists with tasks or items that need to be done.
 
 App made as a final project for **Web application development project** course which was part of 6-month training program [Programing and application development - PRA](https://www.fis.unm.si/studijski-programi/polletna-izobrazevanja/).
