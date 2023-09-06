@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Task Lists App Project
 A simple todo application REST API developed using Spring Boot. User can add multiple lists with tasks or items that need to be done.
 
@@ -34,3 +35,7 @@ A short summary of available REST API Endpoints for the functionalities of the a
 ### TODO
 * Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
 
+=======
+# ListsApp-Project
+Todo lists app made while learning spring boot and vue.js 
+>>>>>>> d004fe51cffe83b5cc537e91c75c530866398f00
