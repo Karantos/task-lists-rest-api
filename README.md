@@ -34,7 +34,4 @@ A short summary of available REST API Endpoints for the functionalities of the a
 ### TODO
 * Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
 
-=======
-# ListsApp-Project
-Todo lists app made while learning spring boot and vue.js 
 
