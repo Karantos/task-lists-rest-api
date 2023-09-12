@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.backend.ListsApp.security.services.UserDetailsImpl;
 
+
 @Component
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
