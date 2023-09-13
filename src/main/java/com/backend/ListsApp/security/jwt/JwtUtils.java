@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.backend.ListsApp.security.services.UserDetailsImpl;
 
+import io.jsonwebtoken.io.Decoders;
 
 @Component
 public class JwtUtils {
