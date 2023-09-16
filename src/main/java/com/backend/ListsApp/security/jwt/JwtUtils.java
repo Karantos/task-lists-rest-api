@@ -1,17 +1,18 @@
 package com.backend.ListsApp.security.jwt;
 
-import java.security.Key;
-import java.util.Date;
-
+import com.backend.ListsApp.security.services.UserDetailsImpl;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.backend.ListsApp.security.services.UserDetailsImpl;
+import java.security.Key;
+import java.util.Date;
 
-import io.jsonwebtoken.io.Decoders;
 
 @Component
 public class JwtUtils {
@@ -51,7 +52,7 @@ public class JwtUtils {
 		} catch (MalformedJwtException e) {
 			logger.error("Invalid JWT token: {}", e.getMessage());
 		} catch (ExpiredJwtException e) {
-			logger.error("JWT tokwn is expired: {}", e.getMessage());
+			logger.error("JWT token is expired: {}", e.getMessage());
 		} catch (UnsupportedJwtException e) {
 			logger.error("JWT token is unsupported: {}", e.getMessage());
 		} catch (IllegalArgumentException e) {
