@@ -21,7 +21,7 @@ public class TasksList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
-	private Long listId;
+	private Long id;
 	private String listDescription;
 	private String listName;
 	
@@ -41,12 +41,12 @@ public class TasksList {
 		super();
 	}
 	
-	public Long getListId() {
-		return listId;
+	public Long getId() {
+		return id;
 	}
 	
-	public void setListId(Long id) {
-		this.listId = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getListName() {

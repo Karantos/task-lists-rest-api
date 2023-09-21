@@ -20,7 +20,7 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Primary key that will be auto generated
-	private Long taskId;
+	private Long id;
 	private String taskTitle;	
 	
 	@CreationTimestamp
@@ -44,11 +44,11 @@ public class Task {
 	}
 	
 	public Long getId() {
-		return taskId;
+		return id;
 	}
 
 	public void setId(Long taskId) {
-		this.taskId = taskId;
+		this.id = taskId;
 	}
 
 	public String getTaskTitle() {

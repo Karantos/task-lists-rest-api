@@ -3,7 +3,9 @@ A simple todo application REST API developed using Spring Boot. User can add mul
 
 App made as a final project for **Web application development project** course which was part of 6-month training program [Programing and application development - PRA](https://www.fis.unm.si/studijski-programi/polletna-izobrazevanja/).
 
-Used **Spring Data JPA** for CRUD operations on a **MySQL** database. Frontend was made with **Vue** and **Vuetify** and can be found as a separate project [here](https://github.com/Karantos/ListsApp-VueFrontend). 
+Used **Spring Data JPA** for CRUD operations on a **MySQL** database. Frontend was made with **Vue** and **Vuetify** and can be found as a separate project [here](https://github.com/janrepar/task-lists-frontend-vue). 
+
+Authentication and authorization implemented with **Spring Security** and **JWT** (JSON Web Token).
 
 ## API Endpoints
 A short summary of available REST API Endpoints for the functionalities of the app that have been implemented.
@@ -27,11 +29,8 @@ A short summary of available REST API Endpoints for the functionalities of the a
 * Spring Boot 3
 * Spring Framework 6
 * Spring Data JPA
+* Spring Security
 * Hibernate
 * Apache Maven
 * MySQL database
-
-### TODO
-* Implement authentication & authorization with **Spring Security** using **JWT** and/or **OAuth2**
-
 
