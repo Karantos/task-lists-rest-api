@@ -2,6 +2,8 @@ package com.backend.ListsApp.payload.request;
 
 import jakarta.validation.constraints.NotBlank;
 
+// POJO (Plain old java class)
+// Represents the data that a user must provide in order to login.
 public class LoginRequest {
     @NotBlank
     private String username;

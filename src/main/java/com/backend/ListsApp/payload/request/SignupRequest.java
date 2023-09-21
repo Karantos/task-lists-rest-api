@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Set;
 
+// Class that represents the data that user must provide in order to create an account.
 public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 20)

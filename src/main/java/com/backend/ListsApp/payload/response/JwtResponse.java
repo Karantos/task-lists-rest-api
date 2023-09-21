@@ -2,6 +2,7 @@ package com.backend.ListsApp.payload.response;
 
 import java.util.List;
 
+// Represents the data that is returned to the user upon successful login.
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
