@@ -35,10 +35,11 @@ public class UserDetailsImpl implements UserDetails {
 	}
 	
 	public static UserDetailsImpl build(User user) {
-		List<GrantedAuthority> authorities = user.getRoles().stream()
-			.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-			.collect(Collectors.toList());
-		
+		List<GrantedAuthority> authorities = user.getRoles().stream() // Gets user roles and converts them to stream.
+			.map(role -> new SimpleGrantedAuthority(role.getName().name())) // Maps each roel in stream to Spring Security authority.
+			.collect(Collectors.toList()); // Collects authorities from stream to list.
+
+		// Creates new User details object
 		return new UserDetailsImpl(
 		    user.getUserId(),
 		    user.getUsername(),

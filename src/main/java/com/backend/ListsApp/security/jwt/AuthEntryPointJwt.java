@@ -12,14 +12,16 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+// Used to handle unauthorized requests.
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
-	
+
+	// Commence method is called when request is unauthorized.
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-		logger.error("Unauthorized error: {}", authException.getMessage());
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
+		logger.error("Unauthorized error: {}", authException.getMessage()); // Logs the unauthorized error.
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized"); // Sends 401 unauthorized response to client.
 	}
 }

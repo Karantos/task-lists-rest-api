@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.backend.ListsApp.entities.User;
 import com.backend.ListsApp.repositories.UserRepository;
 
+// Loads the user information from the database using loadUserByUsername() method in UserDetailsServiceImpl class.
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
@@ -18,9 +19,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUsername(username)
-			.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+		User user = userRepository.findByUsername(username) // Finds the user in db.
+			.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username)); // Throws exception if user not found.
 			
-		return UserDetailsImpl.build(user);
+		return UserDetailsImpl.build(user); // Creates a user details object from the user with UserDetailsImpl build method.
 	}
 }

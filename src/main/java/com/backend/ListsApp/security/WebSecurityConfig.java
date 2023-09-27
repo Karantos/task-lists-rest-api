@@ -1,4 +1,3 @@
-
 package com.backend.ListsApp.security;
 
 import com.backend.ListsApp.security.jwt.AuthEntryPointJwt;
@@ -30,7 +29,7 @@ public class WebSecurityConfig {
 	
 	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;
-	
+
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
 		return new AuthTokenFilter();
@@ -59,18 +58,18 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable()) // Disables CSRF
-			.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler)) // Sets authentication entry point to AuthEntryPointJwt
+			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Spring security will not create sessions for users
 			.authorizeHttpRequests(auth ->
 				auth.requestMatchers("/api/auth/**").permitAll() // Permits all requests to the path that matches pattern
 					.requestMatchers("/api/test/**").permitAll()
 					.anyRequest().authenticated() // Authenticates all requests except the above
 			);
 		
-		http.authenticationProvider(authenticationProvider());
+		http.authenticationProvider(authenticationProvider()); // Sets authentication provider.
 		
-		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class); // Adds authenticationJwtTokenFilter() before UsernamePasswordAuthenticationFilter to the security filter chain
 		
-		return http.build();
+		return http.build(); // Builds and returns the security filter chain.
 	}
 }
